@@ -1,28 +1,23 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import List from './List';
+import data from './Data';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React Fasters dadhadasdx
-          </a>
-        </header>
-      </div>
-    );
-  }
+function App() {
+  const [people, setPeople] = useState(data)
+  return(
+    <main>
+      <section className = "container">
+          <h3>{ people.length} Birthdays Today </h3>
+          <List people ={people} />
+          { people.length >0 ? (
+          <button onClick = {()=> setPeople([])}>Clear All
+          </button>) : ( <div> </div>  )}
+            
+      </section>
+    </main>
+
+  );
 }
 
 export default App;
